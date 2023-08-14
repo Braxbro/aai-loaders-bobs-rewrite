@@ -3,24 +3,10 @@ local tiers = {
     ["turbo"] = { color = util.color("a510e5d1"), fluid = "lubricant", lubricant_running = 0.25, index = 4, previous_loader = "aai-express-loader", logistics = "logistics-4" },
     ["ultimate"] = { color = util.color("16f263d1"), fluid = "lubricant", lubricant_running = 0.3, index = 5, previous_loader = "aai-bobs-turbo-loader", logistics = "logistics-5" },
 }
-
+-- Mod compatibility stuff
 if not data.raw["transport-belt"]["basic-transport-belt"] then
     tiers["basic"] = nil
 end
-
-for k,v in pairs(tiers) do
-    v.technology = {
-        name = "aai-bobs-" .. k .. "-loader",
-        prerequisites = { v.logistics, v.previous_loader },
-        unit = {
-            count = data.raw["technology"][v.logistics].unit.count * 1.5,
-            ingredients = table.deepcopy(data.raw["technology"][v.logistics].unit.ingredients),
-            time = data.raw["technology"][v.logistics].unit.time * 1.5
-        }
-    }
-end
-
-require("recipes")(tiers)
 
 if mods["boblogistics-belt-reskin"] then
     if data.raw["transport-belt"]["basic-transport-belt"] then
@@ -36,6 +22,20 @@ if mods["reskins-library"] and not (reskins.bobs and (reskins.bobs.triggers.logi
     tiers["turbo"].color = reskins.lib.belt_tint_index[tiers["turbo"].index]
     tiers["ultimate"].color = reskins.lib.belt_tint_index[tiers["ultimate"].index]
 end
+
+for k,v in pairs(tiers) do
+    v.technology = {
+        name = "aai-bobs-" .. k .. "-loader",
+        prerequisites = { v.logistics, v.previous_loader },
+        unit = {
+            count = data.raw["technology"][v.logistics].unit.count * 1.5,
+            ingredients = table.deepcopy(data.raw["technology"][v.logistics].unit.ingredients),
+            time = data.raw["technology"][v.logistics].unit.time * 1.5
+        }
+    }
+end
+
+require("recipes")(tiers)
 
 local function make_tier(key)
 
