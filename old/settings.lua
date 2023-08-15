@@ -1,12 +1,9 @@
-mods = script.active_mods
-
 data:extend({
     {
-        type = "string-setting",
-        name = "aai-loaders-bobs-rewrite-recipe-style",
+        type = "bool-setting",
+        name = "aai-loaders-bobs-adjust-base-loaders-recipe",
         setting_type = "startup",
-        default_value = "bobslogistics",
-        allowed_values = {"aai-loaders", "boblogistics"}, -- use 'mods["modname"] and "modname"' for non-dependencies/optional dependencies
+        default_value = true,
         order = "a",
     },
     {

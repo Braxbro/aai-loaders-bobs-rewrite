@@ -18,7 +18,7 @@ do
     do
         local belt = resourceTiers.belt
         -- base
-        belt.base = {{"basic-transport-belt", 1}}
+        belt.basic = {{"basic-transport-belt", 1}}
         belt.regular = {{"transport-belt", 1}}
         belt.fast = {{"fast-transport-belt", 1}}
         belt.express = {{"express-transport-belt", 1}}
@@ -95,16 +95,16 @@ do
         intermediate.basic = {{"iron-gear-wheel", 1}}
         intermediate.regular = {{"iron-gear-wheel", 2}}
         intermediate.fast = {{"engine-unit", 1}}
-        intermediate.express = {{"electric-engine-unit", 1}, {"lubricant", 10}}
-        intermediate.turbo = {{"electric-engine-unit", 1}, {"advanced-circuit", 1}, {"lubricant", 15}}
-        intermediate.ultimate = {{"electric-engine-unit", 1}, {"advanced-circuit", 1}, {"low-density-structure", 1}, {"lubricant", 20}}
+        intermediate.express = {{"electric-engine-unit", 1}, {type = "fluid", name = "lubricant", amount = 10}}
+        intermediate.turbo = {{"electric-engine-unit", 1}, {"advanced-circuit", 1}, {type = "fluid", name = "lubricant", amount = 15}}
+        intermediate.ultimate = {{"electric-engine-unit", 1}, {"advanced-circuit", 1}, {"low-density-structure", 1}, {type = "fluid", name = "lubricant", amount = 20}}
         
         if mods["bobplates"] and settings.startup["bobmods-logistics-robotparts"] then
             -- logistics tools map to the material tiers much more nicely than the above when MCI is present. These will be added to the loader techs, to be safe.
             intermediate.fast = {{"robot-tool-logistic", 1}}
-            intermediate.express = {{"robot-tool-logistic-2", 1}, {"lubricant", 10}}
-            intermediate.turbo = {{"robot-tool-logistic-3", 1}, {"lubricant", 15}}
-            intermediate.ultimate = {{"robot-tool-logistic-4", 1}, {"lubricant", 20}}
+            intermediate.express = {{"robot-tool-logistic-2", 1}, {type = "fluid", name = "lubricant", amount = 10}}
+            intermediate.turbo = {{"robot-tool-logistic-3", 1}, {type = "fluid", name = "lubricant", amount = 15}}
+            intermediate.ultimate = {{"robot-tool-logistic-4", 1}, {type = "fluid", name = "lubricant", amount = 20}}
         end
     end
 
@@ -122,12 +122,12 @@ do
         if mods["bobplates"] then
             plate.regular = {{"tin-plate", 1}}
             plate.fast = {{"bronze-alloy", 1}}
-            plate.express = {{"aluminum-plate", 1}}
+            plate.express = {{"aluminium-plate", 1}}
             plate.turbo = {{"titanium-plate", 1}}
             plate.ultimate = {{"nitinol-alloy", 1}}
         end
     end
-    dummy.resourceTiers.bobslogistics = resourceTiers
+    dummy.resourceTiers.boblogistics = resourceTiers
 end
 
 return dummy.resourceTiers

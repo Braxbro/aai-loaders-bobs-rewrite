@@ -2,11 +2,11 @@ local dummy = {}
 dummy.mods = {}
 dummy.mods.boblogistics = {
     basic = {"logistics-0"},
-    regular = {"logistics-1", "aai-bobs-loader-0"},
-    fast = {"logistics-2", "aai-bobs-loader-1"},
-    express = {"logistics-3", "aai-bobs-loader-2"},
-    turbo = {"logistics-4", "aai-bobs-loader-3"},
-    ultimate = {"logistics-5", "aai-bobs-loader-4"}
+    regular = {"logistics", "aai-boblogistics-basic-loader"},
+    fast = {"logistics-2", "aai-boblogistics-loader"},
+    express = {"logistics-3", "aai-boblogistics-fast-loader"},
+    turbo = {"logistics-4", "aai-boblogistics-express-loader"},
+    ultimate = {"logistics-5", "aai-boblogistics-turbo-loader"}
 }
 dummy.fluids = {}
 dummy.fluids.boblogistics = {
@@ -21,7 +21,8 @@ for _, effect in pairs(data.raw.technology["oil-processing"].effects) do
 end
 
 if earlyLube then
-    if script.active_mods["angelspetrochem"] then -- angels replaces the oil processing recipe.
+    dummy.fluids.boblogistics.fast = {}
+    if mods["angelspetrochem"] then -- angels replaces the oil processing recipe.
         table.insert(
             data.raw.technology["angels-oil-processing"].effects, 
             {type="unlock-recipe", recipe="lubricant-from-crude-oil"} -- add the early lube recipe
