@@ -23,6 +23,15 @@ local tierColors = {
     }
 }
 
+if mods["boblogistics-belt-reskin"] then
+    if data.raw["transport-belt"]["basic-transport-belt"] then
+        tierColors.boblogistics.basic = util.color("e7e7e7d1")
+    end
+    if data.raw["transport-belt"]["turbo-transport-belt"] then
+        tierColors.boblogistics.turbo = util.color("df1ee5d1")
+    end
+end
+
 if mods["reskins-library"] and not (reskins.bobs and (reskins.bobs.triggers.logistics.entities == false)) then
     tierColors.boblogistics.basic = reskins.lib.belt_tint_index[0]
     tierColors.boblogistics.regular = reskins.lib.belt_tint_index[1]

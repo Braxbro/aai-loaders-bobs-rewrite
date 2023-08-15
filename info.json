@@ -1,6 +1,6 @@
  {
     "name": "aai-loaders-bobs",
-    "version": "0.3.0",
+    "version": "1.0.0",
     "title": "AAI Loaders: Bob's Mods",
     "author": "CerulanLumina",
     "factorio_version": "1.1",
@@ -12,6 +12,11 @@
         "? reskins-bobs",
         "? prismatic-belts",
         "? boblogistics-belt-reskin",
-        "! aai-loader-rebalance"
+        "! aai-loader-rebalance",
+        "! aai-industry",
+        "! IndustrialRevolution3",
+        "! Krastorio2",
+        "! space-exploration",
+        "! pypostprocessing"
     ]
  }
